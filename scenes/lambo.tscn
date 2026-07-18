@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://bdm2lld1oskdh"]
+
+[ext_resource type="PackedScene" uid="uid://bkbo4kle3vrwq" path="res://assets/models/lamborghini/lamborghini_aventador_svj_sdc__free.glb" id="1_7wwq0"]
+[ext_resource type="Script" uid="uid://dxvx5ss7mfrfr" path="res://scenes/lambo.gd" id="1_q3qph"]
+[ext_resource type="Texture2D" uid="uid://b1pmjxcs6eh8t" path="res://assets/images/bunny.png" id="3_ake2c"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7wwq0"]
+size = Vector3(1.5, 1, 4)
+
+[node name="Lambo" type="VehicleBody3D" unique_id=1964884183]
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+mass = 100.0
+script = ExtResource("1_q3qph")
+
+[node name="Sketchfab_Scene" parent="." unique_id=369722192 instance=ExtResource("1_7wwq0")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1969762265]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_7wwq0")
+debug_fill = false
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=2072566660]
+transform = Transform3D(-1, 0, -8.742278e-08, -1.877425e-08, 0.97666854, 0.21475238, 8.538308e-08, 0.21475238, -0.97666854, 0, 2.745638, -4.314953)
+
+[node name="VehicleWheel3D" type="VehicleWheel3D" parent="." unique_id=570231755]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.35, 1.2)
+use_as_steering = true
+wheel_radius = 0.6
+
+[node name="VehicleWheel3D2" type="VehicleWheel3D" parent="." unique_id=2102467164]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.35, 1.2)
+use_as_steering = true
+wheel_radius = 0.6
+
+[node name="VehicleWheel3D3" type="VehicleWheel3D" parent="." unique_id=375998541]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.35, -1.45)
+use_as_traction = true
+wheel_radius = 0.6
+
+[node name="VehicleWheel3D4" type="VehicleWheel3D" parent="." unique_id=482043358]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.35, -1.45)
+use_as_traction = true
+wheel_radius = 0.6
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1383993632]
+transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, 1.9579902, 0)
+texture = ExtResource("3_ake2c")
