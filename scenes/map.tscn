@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://rmqtiaq43eua"]
 
+[ext_resource type="Script" uid="uid://bdlgnbs3v14u6" path="res://scenes/map.gd" id="1_be0no"]
 [ext_resource type="Texture2D" uid="uid://bgyi15w1pvpee" path="res://assets/images/racetrack.png" id="2_gldc4"]
 [ext_resource type="PackedScene" uid="uid://bdm2lld1oskdh" path="res://scenes/lambo.tscn" id="2_paxxb"]
 [ext_resource type="Texture2D" uid="uid://c3uioqfj2rh5t" path="res://assets/images/title.png" id="3_0cso3"]
@@ -7,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://b4xhm52nrkbgy" path="res://assets/audio/Le Grand Chase.mp3" id="3_gldc4"]
 [ext_resource type="Texture2D" uid="uid://cqej7w5i3hi8w" path="res://assets/images/explosion.png" id="4_2klcf"]
 [ext_resource type="PackedScene" uid="uid://cjhc3i1y4tye4" path="res://scenes/banana.tscn" id="7_nakos"]
+[ext_resource type="AudioStream" uid="uid://vcen8lbdbx26" path="res://assets/audio/roblox-eating-sound-effect-nom-nom-nom.mp3" id="8_blm8a"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_paxxb"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -268,7 +270,15 @@ animations = [{
 "speed": 48.0
 }]
 
+[sub_resource type="PrismMesh" id="PrismMesh_be0no"]
+lightmap_size_hint = Vector2i(14, 21)
+size = Vector3(5, 3, 20)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_blm8a"]
+data = PackedVector3Array(0, 2.5, 10, 2.5, -2.5, 10, -2.5, -2.5, 10, 0, 2.5, -10, -2.5, -2.5, -10, 2.5, -2.5, -10, 0, 2.5, 10, 0, 2.5, -10, 2.5, -2.5, 10, 0, 2.5, -10, 2.5, -2.5, -10, 2.5, -2.5, 10, 0, 2.5, -10, 0, 2.5, 10, -2.5, -2.5, -10, 0, 2.5, 10, -2.5, -2.5, 10, -2.5, -2.5, -10, -2.5, -2.5, 10, 2.5, -2.5, 10, -2.5, -2.5, -10, 2.5, -2.5, 10, 2.5, -2.5, -10, -2.5, -2.5, -10)
+
 [node name="Map" type="Node3D" unique_id=1412693495]
+script = ExtResource("1_be0no")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1157191768]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
@@ -317,19 +327,89 @@ offset_right = 213.0
 offset_bottom = 244.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "WASD to move
-Space to jump
-Collect all the bananas!"
+Space to jump"
+
+[node name="BananaCount" type="Label" parent="Lambo/Intro/CanvasLayer" unique_id=724812086]
+offset_left = 20.0
+offset_top = 236.0
+offset_right = 200.0
+offset_bottom = 311.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "Bananas left:
+(0/10)"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Lambo/Intro/CanvasLayer" unique_id=814805428]
 position = Vector2(130, 149)
 scale = Vector2(3.5842104, 3.5842106)
 sprite_frames = SubResource("SpriteFrames_fq663")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1326633527]
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=1326633527]
 stream = ExtResource("3_gldc4")
+volume_db = -1.0
 autoplay = true
 
-[node name="Banana" parent="." unique_id=92598016 instance=ExtResource("7_nakos")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.91436195, -20.399931)
+[node name="BananaAudio" type="AudioStreamPlayer" parent="." unique_id=1551924300]
+stream = ExtResource("8_blm8a")
+volume_db = 9.0
+
+[node name="Bananas" type="Node3D" parent="." unique_id=818832196]
+
+[node name="Banana" parent="Bananas" unique_id=92598016 instance=ExtResource("7_nakos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.267487, 0.91436195, -50.66297)
+
+[node name="Banana2" parent="Bananas" unique_id=853690496 instance=ExtResource("7_nakos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.856995, 0.91436195, -113.38255)
+
+[node name="Banana3" parent="Bananas" unique_id=5738653 instance=ExtResource("7_nakos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 127.820984, 4.241494, -5.191025)
+
+[node name="Banana4" parent="Bananas" unique_id=1478695687 instance=ExtResource("7_nakos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 90.53473, 0.91436195, 125.005585)
+
+[node name="Banana5" parent="Bananas" unique_id=1663021051 instance=ExtResource("7_nakos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.87677, 0.91436195, 203.85704)
+
+[node name="Banana6" parent="Bananas" unique_id=1167403001 instance=ExtResource("7_nakos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128.36023, 4.2, 104.154076)
+
+[node name="Banana7" parent="Bananas" unique_id=1413315147 instance=ExtResource("7_nakos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -108.12207, 0.91436195, -65.09369)
+
+[node name="Banana8" parent="Bananas" unique_id=124377361 instance=ExtResource("7_nakos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.915822, 4.118149, 69.659164)
+
+[node name="Banana9" parent="Bananas" unique_id=1231353692 instance=ExtResource("7_nakos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -108.12207, 0.91436195, -183.06526)
+
+[node name="Banana10" parent="Bananas" unique_id=514926485 instance=ExtResource("7_nakos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 105.97531, 0.91436195, -66.447136)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=849074149]
+transform = Transform3D(0.76231825, 0, -0.6472023, 0, 1, 0, 0.6472023, 0, 0.76231825, 126.74504, 1.214612, -3.2017746)
+mesh = SubResource("PrismMesh_be0no")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D" unique_id=2080896368]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D" unique_id=543193720]
+shape = SubResource("ConcavePolygonShape3D_blm8a")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=655518010]
+transform = Transform3D(0.4864269, 0, -0.87372124, 0, 1, 0, 0.87372124, 0, 0.4864269, -129.83821, 1.214612, 104.72179)
+mesh = SubResource("PrismMesh_be0no")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D2" unique_id=560255057]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D2/StaticBody3D" unique_id=1995653176]
+shape = SubResource("ConcavePolygonShape3D_blm8a")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=1044452736]
+transform = Transform3D(-0.15111431, -0.0032398095, -0.98851085, 0.001468967, 0.99999267, -0.0035020001, 0.98851514, -0.0019812882, -0.15110853, 2.0088882, 1.214612, 69.0608)
+mesh = SubResource("PrismMesh_be0no")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D3" unique_id=1519309117]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D3/StaticBody3D" unique_id=540983449]
+shape = SubResource("ConcavePolygonShape3D_blm8a")
 
 [connection signal="animation_finished" from="Lambo/Intro/CanvasLayer/AnimatedSprite2D" to="Lambo/Intro" method="_on_animated_sprite_2d_animation_finished"]

@@ -10,4 +10,4 @@ func _process(delta: float) -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("jump"):
-		linear_velocity.y = 9.0
+		linear_velocity.y = 12.0
