@@ -3,9 +3,13 @@
 [ext_resource type="PackedScene" uid="uid://bkbo4kle3vrwq" path="res://assets/models/lamborghini/lamborghini_aventador_svj_sdc__free.glb" id="1_7wwq0"]
 [ext_resource type="Script" uid="uid://dxvx5ss7mfrfr" path="res://scenes/lambo.gd" id="1_q3qph"]
 [ext_resource type="Texture2D" uid="uid://b1pmjxcs6eh8t" path="res://assets/images/bunny.png" id="3_ake2c"]
+[ext_resource type="AudioStream" uid="uid://0cfgefuhu6os" path="res://assets/audio/boing.mp3" id="4_nb8m2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7wwq0"]
 size = Vector3(1.5, 1, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ake2c"]
+size = Vector3(1, 0.5, 1)
 
 [node name="Lambo" type="VehicleBody3D" unique_id=1964884183]
 collision_layer = 3
@@ -44,3 +48,17 @@ wheel_radius = 0.6
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=1383993632]
 transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, 1.9579902, 0)
 texture = ExtResource("3_ake2c")
+
+[node name="FloorChecker" type="Area3D" parent="." unique_id=965364498]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.88336813, 0)
+collision_layer = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FloorChecker" unique_id=108090760]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.61744547, 0)
+shape = SubResource("BoxShape3D_ake2c")
+
+[node name="BoingAudio" type="AudioStreamPlayer" parent="." unique_id=1514910451]
+stream = ExtResource("4_nb8m2")
+
+[connection signal="area_entered" from="FloorChecker" to="." method="_on_floor_checker_area_entered"]
+[connection signal="body_entered" from="FloorChecker" to="." method="_on_floor_checker_body_entered"]
