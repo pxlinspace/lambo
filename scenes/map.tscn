@@ -2,6 +2,11 @@
 
 [ext_resource type="Texture2D" uid="uid://bgyi15w1pvpee" path="res://assets/images/racetrack.png" id="2_gldc4"]
 [ext_resource type="PackedScene" uid="uid://bdm2lld1oskdh" path="res://scenes/lambo.tscn" id="2_paxxb"]
+[ext_resource type="Texture2D" uid="uid://c3uioqfj2rh5t" path="res://assets/images/title.png" id="3_0cso3"]
+[ext_resource type="Script" uid="uid://dq7vugjix5nag" path="res://scenes/intro.gd" id="3_2lpho"]
+[ext_resource type="AudioStream" uid="uid://b4xhm52nrkbgy" path="res://assets/audio/Le Grand Chase.mp3" id="3_gldc4"]
+[ext_resource type="Texture2D" uid="uid://cqej7w5i3hi8w" path="res://assets/images/explosion.png" id="4_2klcf"]
+[ext_resource type="PackedScene" uid="uid://cjhc3i1y4tye4" path="res://scenes/banana.tscn" id="7_nakos"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_paxxb"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -18,6 +23,251 @@ tonemap_mode = 2
 [sub_resource type="BoxShape3D" id="BoxShape3D_paxxb"]
 size = Vector3(400, 1, 500)
 
+[sub_resource type="Animation" id="Animation_paxxb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -1.5707964, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_gldc4"]
+resource_name = "start"
+length = 5.0
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector3(0, -1.5707964, 0), Vector3(0, 10.995574, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0.2, 0.2, 0.2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0cso3"]
+_data = {
+&"RESET": SubResource("Animation_paxxb"),
+&"start": SubResource("Animation_gldc4")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2lpho"]
+atlas = ExtResource("4_2klcf")
+region = Rect2(1, 1, 98, 95)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nakos"]
+atlas = ExtResource("4_2klcf")
+region = Rect2(99, 1, 98, 95)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jh32y"]
+atlas = ExtResource("4_2klcf")
+region = Rect2(197, 1, 98, 95)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_be0no"]
+atlas = ExtResource("4_2klcf")
+region = Rect2(295, 1, 98, 95)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_blm8a"]
+atlas = ExtResource("4_2klcf")
+region = Rect2(393, 1, 98, 95)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mlgqr"]
+atlas = ExtResource("4_2klcf")
+region = Rect2(1, 96, 98, 95)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wslke"]
+atlas = ExtResource("4_2klcf")
+region = Rect2(99, 96, 98, 95)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gw3fx"]
+atlas = ExtResource("4_2klcf")
+region = Rect2(197, 96, 98, 95)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n1psn"]
+atlas = ExtResource("4_2klcf")
+region = Rect2(295, 96, 98, 95)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c00ee"]
+atlas = ExtResource("4_2klcf")
+region = Rect2(393, 96, 98, 95)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p7tei"]
+atlas = ExtResource("4_2klcf")
+region = Rect2(1, 191, 98, 95)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c70he"]
+atlas = ExtResource("4_2klcf")
+region = Rect2(99, 191, 98, 95)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mo32q"]
+atlas = ExtResource("4_2klcf")
+region = Rect2(197, 191, 98, 95)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6k6j1"]
+atlas = ExtResource("4_2klcf")
+region = Rect2(295, 191, 98, 95)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m335s"]
+atlas = ExtResource("4_2klcf")
+region = Rect2(393, 191, 98, 95)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sq6bu"]
+atlas = ExtResource("4_2klcf")
+region = Rect2(1, 286, 98, 95)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4b7dj"]
+atlas = ExtResource("4_2klcf")
+region = Rect2(99, 286, 98, 95)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2cfcp"]
+atlas = ExtResource("4_2klcf")
+region = Rect2(197, 286, 98, 95)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y2ir2"]
+atlas = ExtResource("4_2klcf")
+region = Rect2(295, 286, 98, 95)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5u2yt"]
+atlas = ExtResource("4_2klcf")
+region = Rect2(393, 286, 98, 95)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_30iet"]
+atlas = ExtResource("4_2klcf")
+region = Rect2(1, 381, 98, 95)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mkblt"]
+atlas = ExtResource("4_2klcf")
+region = Rect2(99, 381, 98, 95)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4o3w1"]
+atlas = ExtResource("4_2klcf")
+region = Rect2(197, 381, 98, 95)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ek7f"]
+atlas = ExtResource("4_2klcf")
+region = Rect2(295, 381, 98, 95)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4qxv8"]
+atlas = ExtResource("4_2klcf")
+region = Rect2(393, 381, 98, 95)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fq663"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2lpho")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nakos")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jh32y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_be0no")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_blm8a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mlgqr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wslke")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gw3fx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n1psn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c00ee")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p7tei")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c70he")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mo32q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6k6j1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m335s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sq6bu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4b7dj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2cfcp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y2ir2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5u2yt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_30iet")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mkblt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4o3w1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ek7f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4qxv8")
+}],
+"loop": false,
+"name": &"default",
+"speed": 48.0
+}]
+
 [node name="Map" type="Node3D" unique_id=1412693495]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1157191768]
@@ -27,15 +277,59 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1973213391]
 environment = SubResource("Environment_0cso3")
 
-[node name="Lambo" parent="." unique_id=1964884183 instance=ExtResource("2_paxxb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.4616203, 20.815102, -29.31895)
+[node name="Ground" type="StaticBody3D" parent="." unique_id=1484381112]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1484381112]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1213791146]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" unique_id=1213791146]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 shape = SubResource("BoxShape3D_paxxb")
 
-[node name="Sprite3D" type="Sprite3D" parent="StaticBody3D" unique_id=1728527553]
+[node name="Sprite3D" type="Sprite3D" parent="Ground" unique_id=1728527553]
 transform = Transform3D(32, 0, 0, 0, -1.3987644e-06, -1, 0, 32, -4.371139e-08, 0, 0, 0)
 texture = ExtResource("2_gldc4")
+
+[node name="Lambo" parent="." unique_id=1964884183 instance=ExtResource("2_paxxb")]
+transform = Transform3D(-0.7681271, 0, 0.6402974, 0, 1, 0, -0.6402974, 0, -0.7681271, 7.4616203, 0.9527588, -29.31895)
+
+[node name="Intro" type="Node3D" parent="Lambo" unique_id=973641610]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 3.801467, 0)
+script = ExtResource("3_2lpho")
+
+[node name="Camera3D" type="Camera3D" parent="Lambo/Intro" unique_id=744148824]
+transform = Transform3D(-4.371139e-08, 0.5, -0.8660254, 0, 0.8660254, 0.5, 1, 2.1855694e-08, -3.7855173e-08, -32.343445, 16.32082, 0)
+current = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Lambo/Intro" unique_id=441664456]
+libraries/ = SubResource("AnimationLibrary_0cso3")
+autoplay = &"start"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Lambo/Intro" unique_id=522908569]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Lambo/Intro/CanvasLayer" unique_id=990702950]
+position = Vector2(148, 98.00001)
+scale = Vector2(0.212, 0.212)
+texture = ExtResource("3_0cso3")
+
+[node name="Label" type="Label" parent="Lambo/Intro/CanvasLayer" unique_id=789853627]
+offset_left = 33.0
+offset_top = 169.0
+offset_right = 213.0
+offset_bottom = 244.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "WASD to move
+Space to jump
+Collect all the bananas!"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Lambo/Intro/CanvasLayer" unique_id=814805428]
+position = Vector2(130, 149)
+scale = Vector2(3.5842104, 3.5842106)
+sprite_frames = SubResource("SpriteFrames_fq663")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1326633527]
+stream = ExtResource("3_gldc4")
+autoplay = true
+
+[node name="Banana" parent="." unique_id=92598016 instance=ExtResource("7_nakos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.91436195, -20.399931)
+
+[connection signal="animation_finished" from="Lambo/Intro/CanvasLayer/AnimatedSprite2D" to="Lambo/Intro" method="_on_animated_sprite_2d_animation_finished"]

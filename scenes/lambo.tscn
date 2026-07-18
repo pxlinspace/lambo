@@ -8,6 +8,7 @@
 size = Vector3(1.5, 1, 4)
 
 [node name="Lambo" type="VehicleBody3D" unique_id=1964884183]
+collision_layer = 3
 axis_lock_angular_x = true
 axis_lock_angular_z = true
 mass = 100.0
@@ -19,9 +20,6 @@ script = ExtResource("1_q3qph")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_7wwq0")
 debug_fill = false
-
-[node name="Camera3D" type="Camera3D" parent="." unique_id=2072566660]
-transform = Transform3D(-1, 0, -8.742278e-08, -1.877425e-08, 0.97666854, 0.21475238, 8.538308e-08, 0.21475238, -0.97666854, 0, 2.745638, -4.314953)
 
 [node name="VehicleWheel3D" type="VehicleWheel3D" parent="." unique_id=570231755]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.35, 1.2)

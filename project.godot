@@ -51,6 +51,10 @@ jump={
 ]
 }
 
+[layer_names]
+
+3d_physics/layer_2="lambo"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"
