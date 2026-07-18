@@ -3,6 +3,7 @@ extends Node3D
 @onready var canvas_layer: CanvasLayer = $CanvasLayer
 @onready var animated_sprite_2d: AnimatedSprite2D = $CanvasLayer/AnimatedSprite2D
 @onready var banana_count: Label = $CanvasLayer/BananaCount
+@onready var bday_label: Label = $CanvasLayer/BdayLabel
 
 
 func _ready() -> void:
@@ -22,3 +23,5 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 
 func _on_banana_collected() -> void:
 	banana_count.text = "Bananas left:\n(" + str(Global.collected_banana_count) + "/10)"
+	if Global.collected_banana_count >= 10:
+		bday_label.show()
